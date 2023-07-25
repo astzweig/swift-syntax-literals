@@ -8,6 +8,7 @@ extension ExprSyntax {
         case .floatLiteralExpr(let node):    return node.inferedType
         case .booleanLiteralExpr(let node):  return node.inferedType
         case .regexLiteralExpr(let node):    return node.inferedType
+        case .arrayExpr(let node):           return node.inferedType
         default:                             return nil
         }
     }
