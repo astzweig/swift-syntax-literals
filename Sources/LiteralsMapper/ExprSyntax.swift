@@ -9,6 +9,7 @@ public extension ExprSyntax {
         case .booleanLiteralExpr(let node):  return node.inferedType
         case .regexLiteralExpr(let node):    return node.inferedType
         case .arrayExpr(let node):           return node.inferedType
+        case .dictionaryExpr(let node):      return node.inferedType
         default:                             return nil
         }
     }
