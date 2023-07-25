@@ -25,6 +25,16 @@ final class InferTypeTests: XCTestCase {
         try Self.assertInferedType(of: literal, equals: type)
     }
     
+    func testInfersTypeOfRegexLiteral() throws {
+        let (literal, type) = try Self.getLiteralAndTypeFromVariableDecl("var regexParser: Regex = /(.+?): (.+)/")
+        try Self.assertInferedType(of: literal, equals: type)
+    }
+    
+    func testDoesNotInferTypeOfRegexInitializer() throws {
+        let (literal, _) = try Self.getLiteralAndTypeFromVariableDecl(#"var regexParser: Regex = try Regex("[0-9]+")"#)
+        XCTAssertNil(literal.inferedType)
+    }
+    
     static func assertInferedType(of literal: ExprSyntax, equals type: TypeSyntax) throws {
         let inferedType = try XCTUnwrap(literal.inferedType)
         XCTAssertEqual(inferedType.description, type.description)

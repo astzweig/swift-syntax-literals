@@ -6,7 +6,8 @@ extension ExprSyntax {
         "Int": IntegerLiteralExprSyntax.self,
         "String": StringLiteralExprSyntax.self,
         "Double": FloatLiteralExprSyntax.self,
-        "Bool": BooleanLiteralExprSyntax.self
+        "Bool": BooleanLiteralExprSyntax.self,
+        "Regex": RegexLiteralExprSyntax.self
     ]
     
     var inferedType: TypeSyntax? {
