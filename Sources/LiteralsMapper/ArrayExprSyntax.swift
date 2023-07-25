@@ -1,7 +1,7 @@
 import SwiftSyntax
 import SwiftSyntaxBuilder
 
-extension ArrayExprSyntax {
+public extension ArrayExprSyntax {
     var inferedType: TypeSyntax? {
         guard let elementExpr = self.elements.first?.expression,
               let elementType = elementExpr.inferedType

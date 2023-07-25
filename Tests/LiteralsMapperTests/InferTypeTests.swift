@@ -4,57 +4,7 @@ import SwiftParser
 import SwiftSyntaxBuilder
 @testable import LiteralsMapper
 
-final class InferTypeTests: XCTestCase {
-    func testInfersTypeOfIntegerLiteral() throws {
-        let (literal, type) = try Self.getLiteralAndTypeFromVariableDecl("var luminosity: Int = 5")
-        try Self.assertInferedType(of: literal, equals: type)
-    }
-    
-    func testInfersTypeOfStringLiteral() throws {
-        let (literal, type) = try Self.getLiteralAndTypeFromVariableDecl(#"var luminosity: String = "bright""#)
-        try Self.assertInferedType(of: literal, equals: type)
-    }
-    
-    func testInfersTypeOfDoubleLiteral() throws {
-        let (literal, type) = try Self.getLiteralAndTypeFromVariableDecl("var luminosity: Double = 1.5")
-        try Self.assertInferedType(of: literal, equals: type)
-    }
-    
-    func testInfersTypeOfBooleanLiteral() throws {
-        let (literal, type) = try Self.getLiteralAndTypeFromVariableDecl("var turnLightOn: Bool = true")
-        try Self.assertInferedType(of: literal, equals: type)
-    }
-    
-    func testInfersTypeOfRegexLiteral() throws {
-        let (literal, type) = try Self.getLiteralAndTypeFromVariableDecl("var regexParser: Regex = /(.+?): (.+)/")
-        try Self.assertInferedType(of: literal, equals: type)
-    }
-    
-    func testDoesNotInferTypeOfRegexInitializer() throws {
-        let (literal, _) = try Self.getLiteralAndTypeFromVariableDecl(#"var regexParser: Regex = try Regex("[0-9]+")"#)
-        XCTAssertNil(literal.inferedType)
-    }
-    
-    func testInfersTypeOfIntArrayInitializer() throws {
-        let (literal, type) = try Self.getLiteralAndTypeFromVariableDecl("var luminosityHistory: [Int] = [10, 5, 7, 1, 18]")
-        try Self.assertInferedType(of: literal, equals: type)
-    }
-    
-    func testInfersTypeOfStringArrayInitializer() throws {
-        let (literal, type) = try Self.getLiteralAndTypeFromVariableDecl(#"var roomHistory: [String] = ["bathroom", "kitchen", "livingroom"]"#)
-        try Self.assertInferedType(of: literal, equals: type)
-    }
-    
-    func testInfersTypeOfNestedStringArrayInitializer() throws {
-        let (literal, type) = try Self.getLiteralAndTypeFromVariableDecl(#"var roomHistory: [[String]] = [["bathroom"], ["kitchen", "livingroom"]]"#)
-        try Self.assertInferedType(of: literal, equals: type)
-    }
-    
-    func testDoesNotInferTypeOfNonLiteralArrayElements() throws {
-        let (literal, _) = try Self.getLiteralAndTypeFromVariableDecl("var luminosityHistory: [OtherType] = [OtherType(), OtherType()]")
-        XCTAssertNil(literal.inferedType)
-    }
-    
+class InferTypeTests: XCTestCase {
     static func assertInferedType(of literal: ExprSyntax, equals type: TypeSyntax) throws {
         let inferedType = try XCTUnwrap(literal.inferedType)
         XCTAssertEqual(inferedType.description, type.description)

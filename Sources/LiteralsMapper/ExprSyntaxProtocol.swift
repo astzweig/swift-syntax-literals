@@ -1,5 +1,5 @@
 import SwiftSyntax
 
-extension ExprSyntaxProtocol {
+public extension ExprSyntaxProtocol {
     var inferedType: TypeSyntax? { nil }
 }

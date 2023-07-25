@@ -1,6 +1,6 @@
 import SwiftSyntax
 import SwiftSyntaxBuilder
 
-extension BooleanLiteralExprSyntax {
+public extension BooleanLiteralExprSyntax {
     var inferedType: TypeSyntax? { "Bool" }
 }

@@ -1,6 +1,6 @@
 import SwiftSyntax
 import SwiftSyntaxBuilder
 
-extension RegexLiteralExprSyntax {
+public extension RegexLiteralExprSyntax {
     var inferedType: TypeSyntax? { "Regex" }
 }

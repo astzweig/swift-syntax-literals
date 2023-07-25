@@ -1,6 +1,6 @@
 import SwiftSyntax
 import SwiftSyntaxBuilder
 
-extension IntegerLiteralExprSyntax {
+public extension IntegerLiteralExprSyntax {
     var inferedType: TypeSyntax? { "Int" }
 }

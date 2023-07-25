@@ -1,6 +1,6 @@
 import SwiftSyntax
 
-extension ExprSyntax {
+public extension ExprSyntax {
     var inferedType: TypeSyntax? {
         switch Syntax(self).as(SyntaxEnum.self) {
         case .integerLiteralExpr(let node):  return node.inferedType

@@ -1,6 +1,6 @@
 import SwiftSyntax
 import SwiftSyntaxBuilder
 
-extension FloatLiteralExprSyntax {
+public extension FloatLiteralExprSyntax {
     var inferedType: TypeSyntax? { "Double" }
 }
