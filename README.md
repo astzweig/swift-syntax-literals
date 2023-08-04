@@ -1,4 +1,9 @@
 # SwiftSyntax Literals
+
+> **Warning**
+> Archived on Aug 04, 2023. The same functionality can be achived through generics.
+> See the [Retrieve type of initializer expression in accessor macro](https://forums.swift.org/t/retrieve-type-of-initializer-expression-in-accessor-macro/66536) post on [forums.swift.org]() for more informations.
+ 
 Extends [`SwiftSyntax`][swift-syntax]'s literal expression types with a computed
 property named `inferedType`, that returns the default infered type of a literal.
 This is mostly useful for attached macros that act like property wrappers and want
@@ -83,3 +88,4 @@ The minimum Swift version supported by swiftui-frameless-window releases are det
 swiftui-frameless-window   | Minimum Swift Version
 ---------------------------|----------------------
 `0.1.0 ...`                | 5.9
+
